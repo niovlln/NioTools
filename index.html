@@ -10,9 +10,15 @@
 </head>
 <body>
     <div class="container">
-        <div id="time" style="font-size:16px;">time</div>
-        <p id="demo">--</p>
-        <button onclick="addPoints()"> Click Me </button>
+        <div id="clock" style="font-size:16px;"></div>
+        <input type="text" class="username-box" id="demo" spellcheck="false">
+        <button onclick="addUsername()"> Add Me </button>
+
+    </div>
+    <div class="username-container" id="demo2">
+        <h2>Username</h2>
+        <p id="usernames"></p>
+        <button onclick="sortUsername()">Sort</button>
     </div>
 </body>
 </html>

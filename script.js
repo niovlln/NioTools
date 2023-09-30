@@ -13,7 +13,7 @@ document.getElementById("demo").innerHTML = car.fullDetail();
 
 
 // POINTS 
-const points = {
+let points = {
     score: 0,
     updateScore : function(){
         return points.score += 1;
@@ -24,5 +24,38 @@ function addPoints() {
     document.getElementById("demo").innerHTML = points.updateScore();
 }
 
-// DATE
-document.getElementById("time").innerHTML = Date();
+
+
+//USERNAME LIST
+const usernames = [];
+displayUsernames();
+
+function displayUsernames() {
+    document.getElementById("usernames").innerHTML = usernames.join("<br>");
+}
+
+
+//ADD USERNAME
+function addUsername() {
+    const input = document.getElementById("demo").value.trim();
+    if (input) {
+        usernames.push(input);
+        displayUsernames();
+        document.getElementById("demo").value = "";
+    }
+}
+
+//SORT USERNAME
+function sortUsername() {
+    usernames.sort();
+    displayUsernames();
+}
+
+// Clock
+setInterval(Clock,1000)
+
+function Clock() {
+    const clock = new Date();
+    document.getElementById("clock").innerHTML = clock.toLocaleTimeString();
+}
+
