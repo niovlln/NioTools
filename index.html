@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> JS Tutorial</title>
     <script src="script.js" defer></script>
+    <!--script src="test.js" defer></script-->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -18,7 +19,11 @@
     <div class="username-container" id="demo2">
         <h2>Username</h2>
         <p id="usernames"></p>
-        <button onclick="sortUsername()">Sort</button>
+        <!--button onclick="sortUsername()">Sort</button-->
+        <div class="button-container">
+            <button onclick="pickRandomUsername()">Pick Random</button>
+            <button onclick="removeUsernamesFromLocalStorage()">Delete All</button>
+        </div>
     </div>
 </body>
 </html>

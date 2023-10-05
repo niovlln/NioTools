@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   line-height: 1;
   text-rendering: optimizeSpeed;
+  overflow: hidden;
 }
 
 /* container */
@@ -61,7 +62,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}.username-container h2{
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.username-container::-webkit-scrollbar {
+  display: none;
+}
+.username-container h2{
   margin-top: 1rem;
   color: whitesmoke;
   font-family: "Josefin Sans";
@@ -75,11 +82,17 @@ body {
 .username-container button {
   margin-left: 1rem;
 }
-.username-container button {
-  width: 30%;
-  height: 5%;
-  position: absolute;
+
+.button-container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  position: fixed;
   bottom: 1rem;
+}
+.button-container button {
+  padding: 0.7rem 1rem;
+  position: relative;
   background-color:whitesmoke;
   color: black;
   font-family: "Josefin Sans";
