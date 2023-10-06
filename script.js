@@ -1,85 +1,58 @@
-// CAR 
-const car = {
-    model: ["toyota" , "suzuki", "mitsubisi"],
-    color: ["red", "white" , "black"],
-    fullDetail : function() {
-        return this.model[2] + " " + this.color[2];
+
+//ITEMS LIST
+let items = [];
+displayItems();
+loadItemsFromLocalStorage();
+
+function displayItems() {
+    document.getElementById("items").innerHTML = items.join("<br>");
+}
+
+function loadItemsFromLocalStorage() {
+    const savedItems = localStorage.getItem("savedItems");
+    if (savedItems) {
+        items = JSON.parse(savedItems);
+        displayItems();
     }
 }
 
-function showCarDetail() {
-document.getElementById("demo").innerHTML = car.fullDetail();
-}
-
-
-// POINTS 
-let points = {
-    score: 0,
-    updateScore : function(){
-        return points.score += 1;
-    }
-}
-
-function addPoints() {
-    document.getElementById("demo").innerHTML = points.updateScore();
-}
-
-
-
-//USERNAME LIST
-let usernames = [];
-displayUsernames();
-loadUsernamesFromLocalStorage();
-
-function displayUsernames() {
-    document.getElementById("usernames").innerHTML = usernames.join("<br>");
-}
-
-function loadUsernamesFromLocalStorage() {
-    const savedUsernames = localStorage.getItem("savedUsernames");
-    if (savedUsernames) {
-        usernames = JSON.parse(savedUsernames);
-        displayUsernames();
-    }
-}
-
-//ADD USERNAME
-function addUsername() {
+//ADD ITEMS
+function addItems() {
     const input = document.getElementById("demo").value.trim();
     if (input) {
-        usernames.push(input);
-        saveUsernamesToLocalStorage()
-        displayUsernames();
+        items.push(input);
+        saveItemsToLocalStorage()
+        displayItems();
         document.getElementById("demo").value = "";
     }
 }
 
-//SORT USERNAME
-function sortUsername() {
-    usernames.sort();
-    displayUsernames();
+//SORT ITEMS
+function sortItems() {
+    items.sort();
+    displayItems();
 }
 
-//RANDOM USERNAME PICK 
-function pickRandomUsername() {
-    if (usernames.length === 0 ) {
-        alert("No Username Available");
+//RANDOM ITEMS PICK 
+function pickRandomItems() {
+    if (items.length === 0 ) {
+        alert("No Items Available");
     }
     else{
-        const randomIndexUsername = Math.floor(Math.random() * usernames.length);
-    alert(usernames[randomIndexUsername]);
+        const randomIndexItems = Math.floor(Math.random() * items.length);
+    alert(items[randomIndexItems]);
     }
     
 }
-//SAVE USERNAMES TO LOCAL STORAGE
-function saveUsernamesToLocalStorage() {
-    localStorage.setItem("savedUsernames", JSON.stringify(usernames));
+//SAVE ITEMS TO LOCAL STORAGE
+function saveItemsToLocalStorage() {
+    localStorage.setItem("savedItems", JSON.stringify(items));
 }
-//REMOVE USERNAMES FROM LOCAL STORAGE
-function removeUsernamesFromLocalStorage() {
-    usernames = [];
-    localStorage.removeItem("savedUsernames");
-    displayUsernames();
+//REMOVE ITEMS FROM LOCAL STORAGE
+function removeItemsFromLocalStorage() {
+    items = [];
+    localStorage.removeItem("savedItems");
+    displayItems();
 }
 
 // Clock
