@@ -17,6 +17,17 @@ function loadItemsFromLocalStorage() {
 }
 
 //ADD ITEMS
+let inputBox = document.getElementById("demo");
+
+inputBox.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addItems();
+    }
+  });
+
+
+
 function addItems() {
     const input = document.getElementById("demo").value.trim();
     if (input) {
@@ -29,8 +40,18 @@ function addItems() {
 
 //SORT ITEMS
 function sortItems() {
-    items.sort();
-    displayItems();
+    const savedItems = localStorage.getItem("savedItems");
+
+    if (savedItems) {
+        items = JSON.parse(savedItems); // Parse the JSON string from local storage
+        if (items.length > 1) {
+            items.sort(); // Use the sort() method to sort the array (this will sort alphabetically for strings)
+            localStorage.setItem("savedItems", JSON.stringify(items));
+            displayItems();
+        } else {
+            alert("Not enough items to sort. Add more items first.");
+        }
+    }
 }
 
 //RANDOM ITEMS PICK 
@@ -44,15 +65,33 @@ function pickRandomItems() {
     }
     
 }
+
 //SAVE ITEMS TO LOCAL STORAGE
 function saveItemsToLocalStorage() {
     localStorage.setItem("savedItems", JSON.stringify(items));
 }
+
 //REMOVE ITEMS FROM LOCAL STORAGE
 function removeItemsFromLocalStorage() {
     items = [];
     localStorage.removeItem("savedItems");
     displayItems();
+}
+
+//REMOVE LAST ITEM FROM LOCAL STORAGE
+function removeLastItemsFromLocalStorage() {
+    const savedItems = localStorage.getItem("savedItems");
+
+    if (savedItems) {
+        items = JSON.parse(savedItems); // Parse the JSON string from local storage
+        if (items.length > 0) {
+            items.pop(); // Use pop() method to remove the last item from the array
+            localStorage.setItem("savedItems", JSON.stringify(items));
+            displayItems();
+        } else {
+            alert("No items to remove.");
+        }
+    }
 }
 
 // Clock

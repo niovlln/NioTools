@@ -2,15 +2,15 @@
     .container {
         height: 50vh;
     }
-    .username-container{
+    .items-container{
         position: absolute;
         height: 50vh;
         width: 100vw;
         top: initial;
         bottom: 0;
-    }.username-container h2 {
+    }.items-container h2 {
         font-size: 1rem;
-    }.username-container p {
+    }.items-container p {
         font-size: 0.8rem;
     }
 }
