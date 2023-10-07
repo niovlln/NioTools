@@ -1,6 +1,7 @@
 @media screen and (max-width: 576px) {
     .container {
         height: 50vh;
+        width: 100vw;
     }
     .items-container{
         position: absolute;
